@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 217 33% 17%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 224 76% 48%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-cosmic-700 text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .space-gradient-btn {
+    @apply bg-gradient-to-r from-glow-purple to-glow-blue hover:from-glow-blue hover:to-glow-purple transition-all duration-300;
+  }
+  
+  .card-glow {
+    @apply bg-card border border-cosmic-500 shadow-md relative transition-all duration-300;
+  }
+  
+  .card-glow::before {
+    content: '';
+    @apply absolute -inset-0.5 rounded-lg bg-gradient-to-r from-glow-blue/20 to-glow-purple/20 opacity-0 transition-opacity duration-300 blur;
+    z-index: -1;
+  }
+  
+  .card-glow:hover::before {
+    @apply opacity-100;
+  }
+  
+  .ad-space {
+    @apply bg-cosmic-600/50 border border-dashed border-cosmic-400 rounded-md flex items-center justify-center text-cosmic-300 text-sm;
+    min-height: 250px;
+  }
+  
+  .ad-space.horizontal {
+    min-height: 90px;
+  }
+  
+  .ad-space.vertical {
+    min-height: 600px;
+  }
+}
+
+/* Transitions */
+.transition-height {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.transition-fade {
+  transition: opacity 0.3s ease;
+}
+
+/* Special styles for date inputs to ensure consistent styling */
+input[type="date"], 
+input[type="time"] {
+  @apply bg-cosmic-600 border border-cosmic-400 rounded px-3 py-2 w-full focus:ring-2 focus:ring-glow-blue focus:border-transparent outline-none transition-all duration-300;
+}
+
+/* Remove default calendar icon in Chrome */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cosmic-700;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cosmic-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-cosmic-400;
+}
